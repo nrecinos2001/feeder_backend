@@ -23,6 +23,8 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@Config/*": ["src/config/*"],
+      "@FillLog/*": ["src/fill-log/*"],
+      "@Database/*": ["src/database/*"],
     }
   }
 }
