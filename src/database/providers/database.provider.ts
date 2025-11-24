@@ -1,5 +1,8 @@
-
 import { DataSource } from 'typeorm';
+import { envVariables } from '@Config/env-variables';
+import { FillLogEntity } from '@FillLog/entities/fill-log.entity';
+
+const { database } = envVariables();
 
 export const databaseProviders = [
   {
@@ -7,15 +10,13 @@ export const databaseProviders = [
     useFactory: async () => {
       const dataSource = new DataSource({
         type: 'postgres',
-        host: process.env.DB_HOST,
-        port: 3306,
-        username: 'root',
-        password: 'root',
-        database: 'feeder',
-        entities: [
-          __dirname + '/../**/*.entity{.ts,.js}',
-        ],
-        synchronize: true,
+        host: database.host,
+        port: database.port,
+        username: database.username,
+        password: database.password,
+        database: database.database,
+        entities: [FillLogEntity],
+        synchronize: false,
       });
 
       return dataSource.initialize();
