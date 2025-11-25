@@ -19,8 +19,9 @@ export class FillLogDoc {
   })
   date: string;
 
-  @Expose(({ obj }: IObj) => {
-    return dayjs(obj.created_at).format('HH:mm');
+  @Expose()
+  @Transform(({ obj }: IObj) => {
+    return dayjs(obj.created_at).startOf('hour').format('HH:mm');
   })
   time: string;
 

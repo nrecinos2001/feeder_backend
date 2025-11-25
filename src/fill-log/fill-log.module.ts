@@ -18,6 +18,6 @@ import { FillLogController } from './controllers';
     },
   ],
   controllers: [FillLogController],
-  exports: ['FILL_LOG_REPOSITORY'],
+  exports: ['FILL_LOG_REPOSITORY', FillLogService],
 })
 export class FillLogModule {}
