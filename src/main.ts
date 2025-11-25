@@ -3,7 +3,6 @@ import { AppModule } from './app.module';
 
 import { envVariables } from '@Config/env-variables';
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const vars = envVariables();
 
 async function bootstrap() {

@@ -8,7 +8,7 @@ export class AppController {
     private readonly appService: AppService,
     @Inject('FILL_LOG_REPOSITORY')
     private readonly fillLogRepository: FillLogRepository,
-  ) { }
+  ) {}
 
   @Get()
   async getHello() {
