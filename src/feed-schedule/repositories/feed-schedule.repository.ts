@@ -1,5 +1,5 @@
-import { FeedScheduleEntity } from "@FeedSchedule/entities";
-import { DataSource } from "typeorm";
+import { FeedScheduleEntity } from '@FeedSchedule/entities';
+import { DataSource } from 'typeorm';
 
 export const FeedScheduleRepository = (dataSource: DataSource) => {
   return dataSource.getRepository(FeedScheduleEntity).extend({
@@ -9,4 +9,6 @@ export const FeedScheduleRepository = (dataSource: DataSource) => {
       });
     },
   });
-}
+};
+
+export type FeedScheduleRepository = ReturnType<typeof FeedScheduleRepository>;

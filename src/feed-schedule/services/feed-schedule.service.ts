@@ -1,5 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 
+import { FeedScheduleRepository } from '../repositories';
+
 @Injectable()
 export class FeedScheduleService {
   constructor(
