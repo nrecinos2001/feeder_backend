@@ -14,12 +14,7 @@ export class AppController {
   ) {}
 
   @Get()
-  async getHello() {
-    const newData = this.fillLogRepository.create({
-      type: LogType.MANUAL,
-    });
-    //await this.fillLogRepository.save(newData);
-    return await this.fillLogService.getFillLogs();
+  getHello(): string {
     return this.appService.getHello();
   }
 }
