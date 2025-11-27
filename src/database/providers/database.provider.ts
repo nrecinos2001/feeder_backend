@@ -1,6 +1,8 @@
 import { DataSource } from 'typeorm';
+
 import { envVariables } from '@Config/env-variables';
 import { FillLogEntity } from '@FillLog/entities/fill-log.entity';
+import { FeedScheduleEntity } from '@FeedSchedule/entities';
 
 const { database } = envVariables();
 
@@ -15,7 +17,7 @@ export const databaseProviders = [
         username: database.username,
         password: database.password,
         database: database.database,
-        entities: [FillLogEntity],
+        entities: [FillLogEntity, FeedScheduleEntity],
         synchronize: false,
       });
 
