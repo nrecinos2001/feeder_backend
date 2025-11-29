@@ -13,11 +13,17 @@ export class FeedScheduleService {
     private readonly feedScheduleRepository: FeedScheduleRepository,
   ) {}
   async getFeedSchedules(): Promise<FeedSchedulerDoc[]> {
-    const feedSchedules = await this.feedScheduleRepository.findOrderByHourAndMinute();
-    return serializeDocClass<FeedSchedulerDoc[]>(
-      FeedSchedulerDoc,
-      feedSchedules,
-    );
+    const feedSchedules =
+      await this.feedScheduleRepository.findOrderByHourAndMinute();
+
+    const sorted = feedSchedules.sort((a, b) => {
+      if (a.hour === b.hour) {
+        return parseInt(a.minute) - parseInt(b.minute);
+      }
+      return parseInt(a.hour) - parseInt(b.hour);
+    });
+
+    return serializeDocClass<FeedSchedulerDoc[]>(FeedSchedulerDoc, sorted);
   }
 
   async createFeedSchedules(
