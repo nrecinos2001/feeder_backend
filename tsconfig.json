@@ -22,12 +22,13 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@Config/*": ["src/config/*"],
-      "@FillLog/*": ["src/fill-log/*"],
-      "@Database/*": ["src/database/*"],
       "@FeedSchedule/*": ["src/feed-schedule/*"],
-      "@Commons/*": ["src/commons/*"],
       "@FillCronjob/*": ["src/fill-cronjob/*"],
+      "@Predictions/*": ["src/predictions/*"],
+      "@Database/*": ["src/database/*"],
+      "@FillLog/*": ["src/fill-log/*"],
+      "@Commons/*": ["src/commons/*"],
+      "@Config/*": ["src/config/*"],
     }
   }
 }
