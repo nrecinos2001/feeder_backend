@@ -1,6 +1,9 @@
-import { IsDate } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class CreateFeedScheduleDto {
-  @IsDate()
-  date: Date;
+  @IsString()
+  hour: string;
+
+  @IsString()
+  minute: string;
 }

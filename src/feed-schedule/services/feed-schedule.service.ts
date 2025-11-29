@@ -14,7 +14,7 @@ export class FeedScheduleService {
     private readonly feedScheduleRepository: FeedScheduleRepository,
   ) {}
   async getFeedSchedules(): Promise<FeedSchedulerDoc[]> {
-    const feedSchedules = await this.feedScheduleRepository.find();
+    const feedSchedules = await this.feedScheduleRepository.findOrderByHourAndMinute();
     return serializeDocClass<FeedSchedulerDoc[]>(
       FeedSchedulerDoc,
       feedSchedules,
@@ -24,9 +24,7 @@ export class FeedScheduleService {
   async createFeedSchedules(
     createFeedScheduleDto: CreateFeedScheduleDto,
   ): Promise<FeedSchedulerDoc> {
-    const utcDate = new Date(createFeedScheduleDto.date.toISOString());
-    const hour = dayjs(utcDate).hour().toString();
-    const minute = dayjs(utcDate).minute().toString();
+    const { hour, minute } = createFeedScheduleDto;
 
     const newFeedSchedule = this.feedScheduleRepository.create({
       hour,
