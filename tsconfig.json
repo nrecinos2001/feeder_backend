@@ -26,7 +26,8 @@
       "@FillLog/*": ["src/fill-log/*"],
       "@Database/*": ["src/database/*"],
       "@FeedSchedule/*": ["src/feed-schedule/*"],
-      "@Commons/*": ["src/commons/*"]
+      "@Commons/*": ["src/commons/*"],
+      "@FillCronjob/*": ["src/fill-cronjob/*"],
     }
   }
 }
