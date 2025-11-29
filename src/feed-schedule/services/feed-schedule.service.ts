@@ -1,5 +1,4 @@
 import { Inject, Injectable } from '@nestjs/common';
-import dayjs from 'dayjs';
 
 import { serializeDocClass } from '@Commons/utils';
 
@@ -36,5 +35,9 @@ export class FeedScheduleService {
       FeedSchedulerDoc,
       savedFeedSchedule,
     );
+  }
+
+  async deleteFeedSchedule(id: number): Promise<void> {
+    await this.feedScheduleRepository.deleteById(id);
   }
 }

@@ -1,4 +1,6 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+
+import { IdParamDto } from '@Commons/dtos';
 
 import { FeedScheduleService } from '../services';
 import { CreateFeedScheduleDto } from '../dtos';
@@ -19,5 +21,10 @@ export class FeedScheduleController {
     return await this.feedScheduleService.createFeedSchedules(
       createFeedScheduleDto,
     );
+  }
+
+  @Delete(':id')
+  async deleteFeedSchedule(@Param() idParamDto: IdParamDto): Promise<void> {
+    await this.feedScheduleService.deleteFeedSchedule(idParamDto.id);
   }
 }

@@ -8,6 +8,10 @@ export const FeedScheduleRepository = (dataSource: DataSource) => {
         order: { hour: 'ASC', minute: 'ASC' },
       });
     },
+
+    async deleteById(id: number): Promise<void> {
+      await this.delete({ id });
+    },
   });
 };
 
