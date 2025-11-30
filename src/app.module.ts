@@ -6,6 +6,7 @@ import { PredictionsModule } from '@Predictions/predictions.module';
 import { DatabaseModule } from '@Database/database.module';
 import { ConfigModuleOptions } from '@Config/config.module';
 import { FillLogModule } from '@FillLog/fill-log.module';
+import { MqttModule } from '@MQTT/mqtt.module';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -18,6 +19,7 @@ import { AppService } from './app.service';
     FeedScheduleModule,
     FillCronjobModule,
     PredictionsModule,
+    MqttModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -29,6 +29,7 @@
       "@FillLog/*": ["src/fill-log/*"],
       "@Commons/*": ["src/commons/*"],
       "@Config/*": ["src/config/*"],
+      "@MQTT/*": ["src/mqtt/*"],
     }
   }
 }
