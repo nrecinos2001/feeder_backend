@@ -18,6 +18,18 @@ services:
     restart: always
     ports:
       - "8001:8001"
+  
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: feeder_mosquitto
+    restart: always
+    ports:
+      - "1883:1883"   # Puerto MQTT
+      - "9001:9001"   # WebSockets (opcional)
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
 
 volumes:
   pgdata:
