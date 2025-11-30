@@ -1,9 +1,9 @@
 import { Expose, Transform } from 'class-transformer';
 import dayjs from 'dayjs';
 
-import { LogType } from '@FillLog/enums';
+import { LogType } from '../enums';
 
-import { FillLogEntity } from '../../entities';
+import { FillLogEntity } from '../entities';
 
 interface IObj {
   obj: FillLogEntity;

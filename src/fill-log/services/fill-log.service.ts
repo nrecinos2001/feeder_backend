@@ -1,7 +1,10 @@
-import { FillLogDoc } from '@FillLog/docs/index.ts/fill-log.doc';
-import { FillLogRepository } from '@FillLog/repositories/fill-log.repository';
 import { Inject, Injectable } from '@nestjs/common';
-import { serializeDocClass } from 'src/commons/utils';
+
+import { serializeDocClass } from '@Commons/utils';
+
+import { FillLogRepository } from '../repositories';
+import { FillLogEntity } from '../entities';
+import { FillLogDoc } from '../docs';
 
 @Injectable()
 export class FillLogService {
@@ -13,5 +16,10 @@ export class FillLogService {
   async getFillLogs(): Promise<FillLogDoc[]> {
     const fillLogs = await this.fillLogRepository.findOrderByCreatedAtDesc();
     return serializeDocClass<FillLogDoc[]>(FillLogDoc, fillLogs);
+  }
+
+  async getLastNFills(n: number): Promise<FillLogEntity[]> {
+    const fillLogs = await this.fillLogRepository.findLastNFills(n);
+    return fillLogs;
   }
 }

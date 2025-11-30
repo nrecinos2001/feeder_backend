@@ -9,6 +9,13 @@ export const FillLogRepository = (dataSource: DataSource) => {
         order: { created_at: 'DESC' },
       });
     },
+
+    async findLastNFills(n: number): Promise<FillLogEntity[]> {
+      return await this.find({
+        order: { created_at: 'DESC' },
+        take: n,
+      });
+    },
   });
 };
 
