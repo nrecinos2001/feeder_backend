@@ -5,11 +5,15 @@ import { FillLogService } from '@FillLog/services';
 import { FillLogEntity } from '@FillLog/entities';
 import { convertToUTC6 } from '@Commons/utils';
 
-import { IPrediction } from '../types';
+import { IFeedPrediction, IPrediction } from '../types';
+import { FeedScheduleService } from '@FeedSchedule/services';
 
 @Injectable()
 export class PredictionsService {
-  constructor(private readonly fillLogsService: FillLogService) { }
+  constructor(
+    private readonly fillLogsService: FillLogService,
+    private readonly feedScheduleService: FeedScheduleService,
+  ) {}
   async getPredictions(): Promise<IPrediction> {
     const last20Fills = await this.fillLogsService.getLastNFills(20);
     const lastFillsByDates: Record<string, FillLogEntity[]> =
@@ -58,5 +62,36 @@ export class PredictionsService {
       nextFillPredictionDays: nextFillPredictionDiff,
     };
     return body;
+  }
+
+  async getFeedPredictions(): Promise<IFeedPrediction> {
+    const times = await this.feedScheduleService.getFeedSchedules();
+    const now = new Date();
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+    // Convertir array a minutos
+    const timesInMinutes = times.map((t) => ({
+      ...t,
+      total: parseInt(t.hour) * 60 + parseInt(t.minute),
+    }));
+
+    // Buscar el siguiente tiempo para hoy
+    const next = timesInMinutes.find((t) => t.total > currentMinutes);
+
+    if (next) {
+      return {
+        hourAndMinute: `${next.hour}:${next.minute}`,
+        date: dayjs(now).format('YYYY-MM-DD'),
+        isToday: true,
+      };
+    }
+
+    // Si no hay siguiente, entonces es mañana el primero del arreglo
+    const first = timesInMinutes[0];
+    return {
+      hourAndMinute: `${first.hour}:${first.minute}`,
+      date: dayjs(now).format('YYYY-MM-DD'),
+      isToday: false,
+    };
   }
 }
