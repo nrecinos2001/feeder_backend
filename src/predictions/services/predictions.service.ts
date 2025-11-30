@@ -25,7 +25,18 @@ export class PredictionsService {
         {} as Record<string, FillLogEntity[]>,
       );
 
-    const lastCreated = dayjs(last20Fills[0].created_at).diff(new Date(), 'hours');
+    if (last20Fills.length === 0) {
+      return {
+        averagesPerDay: 0,
+        nextFillPrediction: 'N/A',
+        nextFillPredictionDays: -1,
+      };
+    }
+
+    const lastCreated = dayjs(last20Fills[0].created_at).diff(
+      new Date(),
+      'hours',
+    );
     const nextFillPredictionRaw = dayjs().add(lastCreated, 'hours').toDate();
     const nextFillPredictionDiff = dayjs(nextFillPredictionRaw).diff(new Date(), 'days');
     const nextFillPrediction =
