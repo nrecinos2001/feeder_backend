@@ -9,4 +9,5 @@ export const envVariables = (): EnvConfig => ({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
   },
+  mqttServer: process.env.MQTT_SERVER as string,
 });

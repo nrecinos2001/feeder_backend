@@ -7,4 +7,5 @@ export interface EnvConfig {
     password: string | undefined;
     database: string | undefined;
   };
+  mqttServer: string;
 }
