@@ -10,4 +10,9 @@ export class PredictionsController {
   async getPredictions(): Promise<IPrediction> {
     return await this.predictionsService.getPredictions();
   }
+
+  @Get('feed')
+  async getFeedPredictions() {
+    return await this.predictionsService.getFeedPredictions();
+  }
 }
