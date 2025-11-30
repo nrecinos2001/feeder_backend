@@ -1,9 +1,8 @@
 import { Expose, Transform } from 'class-transformer';
 import dayjs from 'dayjs';
 
-import { LogType } from '../enums';
-
 import { FillLogEntity } from '../entities';
+import { LogType } from '../enums';
 
 interface IObj {
   obj: FillLogEntity;
@@ -21,7 +20,7 @@ export class FillLogDoc {
 
   @Expose()
   @Transform(({ obj }: IObj) => {
-    return dayjs(obj.created_at).startOf('hour').format('HH:mm');
+    return dayjs(obj.created_at).format('HH:mm');
   })
   time: string;
 

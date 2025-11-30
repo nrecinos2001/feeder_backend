@@ -33,12 +33,15 @@ export class PredictionsService {
       };
     }
 
-    const lastCreated = dayjs(last20Fills[0].created_at).diff(
-      new Date(),
+    const lastCreated = dayjs(new Date()).diff(
+      last20Fills[0].created_at,
       'hours',
     );
     const nextFillPredictionRaw = dayjs().add(lastCreated, 'hours').toDate();
-    const nextFillPredictionDiff = dayjs(nextFillPredictionRaw).diff(new Date(), 'days');
+    const nextFillPredictionDiff = dayjs(nextFillPredictionRaw).diff(
+      new Date(),
+      'days',
+    );
     const nextFillPrediction =
       nextFillPredictionDiff === 0
         ? 'Hoy'
