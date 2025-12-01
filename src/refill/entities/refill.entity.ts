@@ -2,9 +2,9 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 import { RefillType } from '../enums';
 
-@Entity()
+@Entity('refill')
 export class RefillEntity {
-  @PrimaryGeneratedColumn({ name: 'refill' })
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
