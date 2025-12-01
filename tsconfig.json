@@ -30,6 +30,7 @@
       "@Commons/*": ["src/commons/*"],
       "@Config/*": ["src/config/*"],
       "@MQTT/*": ["src/mqtt/*"],
+      "@Sendgrid/*": ["src/sendgrid/*"]
     }
   }
 }

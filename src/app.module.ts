@@ -3,8 +3,9 @@ import { Module } from '@nestjs/common';
 import { FeedScheduleModule } from '@FeedSchedule/feed-schedule.module';
 import { FillCronjobModule } from '@FillCronjob/fill-cronjob.module';
 import { PredictionsModule } from '@Predictions/predictions.module';
-import { DatabaseModule } from '@Database/database.module';
 import { ConfigModuleOptions } from '@Config/config.module';
+import { DatabaseModule } from '@Database/database.module';
+import { SendgridModule } from '@Sendgrid/sendgrid.module';
 import { FillLogModule } from '@FillLog/fill-log.module';
 import { MqttModule } from '@MQTT/mqtt.module';
 
@@ -20,6 +21,7 @@ import { AppService } from './app.service';
     FillCronjobModule,
     PredictionsModule,
     MqttModule,
+    SendgridModule,
   ],
   controllers: [AppController],
   providers: [AppService],

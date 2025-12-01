@@ -10,4 +10,5 @@ export const envVariables = (): EnvConfig => ({
     database: process.env.DB_NAME,
   },
   mqttServer: process.env.MQTT_SERVER as string,
+  sendgridApiKey: process.env.SENDGRID_API_KEY as string,
 });

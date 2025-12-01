@@ -8,4 +8,5 @@ export default Joi.object({
   DB_PASSWORD: Joi.string().required(),
   DB_NAME: Joi.string().required(),
   MQTT_SERVER: Joi.string().required(),
+  SENDGRID_API_KEY: Joi.string().required(),
 });

@@ -8,4 +8,5 @@ export interface EnvConfig {
     database: string | undefined;
   };
   mqttServer: string;
+  sendgridApiKey: string;
 }
