@@ -15,4 +15,9 @@ export class PredictionsController {
   async getFeedPredictions() {
     return await this.predictionsService.getFeedPredictions();
   }
+
+  @Get('percentage')
+  async getBucketPercentage() {
+    return await this.predictionsService.getBucketPercentage();
+  }
 }

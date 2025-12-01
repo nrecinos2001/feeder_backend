@@ -9,7 +9,7 @@ const envs = envVariables();
 
 @Injectable()
 export class SendgridService {
-  constructor(private readonly refillService: RefillService) { }
+  constructor(private readonly refillService: RefillService) {}
   async sendAlertEmail(): Promise<void> {
     const lastRefill = await this.refillService.getLastNRefills(1);
     if (lastRefill?.length && lastRefill[0]?.type === RefillType.EMPTY) {

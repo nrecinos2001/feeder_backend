@@ -9,7 +9,7 @@ export class RefillService {
   constructor(
     @Inject('REFILL_REPOSITORY')
     private readonly refillRepository: RefillRepository,
-  ) { }
+  ) {}
   async getLastNRefills(n: number): Promise<RefillEntity[]> {
     const refillLogs = await this.refillRepository.findLastNFills(n);
     return refillLogs;
@@ -18,8 +18,9 @@ export class RefillService {
   async create(distance: number): Promise<RefillEntity> {
     const lastRefill = await this.getLastNRefills(1);
     const type = distance > 10 ? RefillType.EMPTY : RefillType.FULL;
+
     if (lastRefill?.length && lastRefill[0]?.type === type) {
-      lastRefill[0];
+      return lastRefill[0];
     }
     const newRefill = this.refillRepository.create({
       distance,

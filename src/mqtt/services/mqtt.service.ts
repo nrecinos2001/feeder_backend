@@ -7,7 +7,7 @@ import { RefillService } from '@Refill/services';
 const vars = envVariables();
 @Injectable()
 export class MqttService {
-  constructor(private readonly refillService: RefillService) { }
+  constructor(private readonly refillService: RefillService) {}
   private client: MqttClient;
 
   onModuleInit() {
@@ -28,7 +28,7 @@ export class MqttService {
       }
 
       if (topic === 'petfeeder/distance') {
-        const msgDistance = parseInt(msg.split(':')[1]?.trim());
+        const msgDistance = parseInt(msg.split(':')[0]?.trim());
         this.refillService.create(msgDistance);
         console.log('Alerta de distancia:', msg);
       }
