@@ -7,6 +7,7 @@ import { ConfigModuleOptions } from '@Config/config.module';
 import { DatabaseModule } from '@Database/database.module';
 import { SendgridModule } from '@Sendgrid/sendgrid.module';
 import { FillLogModule } from '@FillLog/fill-log.module';
+import { RefillModule } from '@Refill/refill.module';
 import { MqttModule } from '@MQTT/mqtt.module';
 
 import { AppController } from './app.controller';
@@ -22,6 +23,7 @@ import { AppService } from './app.service';
     PredictionsModule,
     MqttModule,
     SendgridModule,
+    RefillModule,
   ],
   controllers: [AppController],
   providers: [AppService],

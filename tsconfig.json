@@ -26,11 +26,12 @@
       "@FillCronjob/*": ["src/fill-cronjob/*"],
       "@Predictions/*": ["src/predictions/*"],
       "@Database/*": ["src/database/*"],
+      "@Sendgrid/*": ["src/sendgrid/*"],
       "@FillLog/*": ["src/fill-log/*"],
       "@Commons/*": ["src/commons/*"],
       "@Config/*": ["src/config/*"],
+      "@Refill/*": ["src/refill/*"],
       "@MQTT/*": ["src/mqtt/*"],
-      "@Sendgrid/*": ["src/sendgrid/*"]
     }
   }
 }
