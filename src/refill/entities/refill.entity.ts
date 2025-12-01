@@ -1,7 +1,8 @@
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 import { RefillType } from '../enums';
 
+@Entity()
 export class RefillEntity {
   @PrimaryGeneratedColumn({ name: 'refill' })
   id: number;

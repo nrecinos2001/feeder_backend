@@ -2,6 +2,7 @@
 require('dotenv').config();
 import { DataSource } from 'typeorm';
 import { FillLogEntity } from '../../fill-log/entities/fill-log.entity';
+import { RefillEntity } from '../../refill/entities/refill.entity';
 import { FeedScheduleEntity } from '../../feed-schedule/entities';
 
 export const AppDataSource = new DataSource({
@@ -13,5 +14,5 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME,
   synchronize: false,
   migrations: ['src/database/migrations/*.ts'],
-  entities: [FillLogEntity, FeedScheduleEntity],
+  entities: [FillLogEntity, FeedScheduleEntity, RefillEntity],
 });
