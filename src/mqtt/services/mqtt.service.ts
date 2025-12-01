@@ -2,10 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { connect, MqttClient } from 'mqtt';
 
 import { envVariables } from '@Config/env-variables';
+import { RefillService } from '@Refill/services';
 
 const vars = envVariables();
 @Injectable()
 export class MqttService {
+  constructor(private readonly refillService: RefillService) { }
   private client: MqttClient;
 
   onModuleInit() {
@@ -26,6 +28,8 @@ export class MqttService {
       }
 
       if (topic === 'petfeeder/distance') {
+        const msgDistance = parseInt(msg.split(':')[1]?.trim());
+        this.refillService.create(msgDistance);
         console.log('Alerta de distancia:', msg);
       }
     });
